@@ -1,5 +1,0 @@
-hadoop: 2.0.0-cdh4.5
-hbase: 0.94.8+hindex and built against hadoop 2.0
-hive: 0.12.0
-impala: 1.2.3
-zookeeper: 3.4.5
