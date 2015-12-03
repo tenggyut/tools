@@ -38,12 +38,14 @@ perl -pi -e "s/<Connector port=\"\d+\" protocol=\"AJP\/1.3\" redirectPort=\"\d+\
 
 ENV_SH=$TOMCAT_HOME/bin/setenv.sh
 
-touch $ENV_SH
-chmod +x $ENV_SH
+if [ -z $ENV_SH ]; then
+  touch $ENV_SH
+  chmod +x $ENV_SH
+  sed -i "97i $ENV_SH" $TOMCAT_HOME/bin/catalina.sh
+fi
 
-echo "#! /bin/bash" >> $ENV_SH
+echo "#! /bin/bash" > $ENV_SH
 echo "export CATALINA_HOME=${TOMCAT_HOME}" >> $ENV_SH
-echo "export CATALINA_PID=${TOMCAT_HOME}/tomcat.pid"
-sed -i "97i $ENV_SH" $TOMCAT_HOME/bin/catalina.sh
+echo "export CATALINA_PID=${TOMCAT_HOME}/tomcat.pid" >> $ENV_SH
 
 echo "done"
