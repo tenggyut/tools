@@ -43,6 +43,7 @@ chmod +x $ENV_SH
 
 echo "#! /bin/bash" >> $ENV_SH
 echo "export CATALINA_HOME=${TOMCAT_HOME}" >> $ENV_SH
+echo "export CATALINA_PID=${TOMCAT_HOME}/tomcat.pid"
 sed -i "97i $ENV_SH" $TOMCAT_HOME/bin/catalina.sh
 
 echo "done"
